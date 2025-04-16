@@ -4,6 +4,10 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $compra = new Compra();
+        print_r($_POST);
+        echo '<br';
+        print_r($_GET);
+        exit; 
         $compra->adicionarCompra($_POST['ativo'], $_POST['quantidade'], $_POST['valor_unitario'], $_POST['data_compra']);
         echo "Compra adicionada com sucesso!";
     }

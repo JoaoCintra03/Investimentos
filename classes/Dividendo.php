@@ -5,9 +5,9 @@ require_once 'Database.php';
 class Dividendo {
     private $db;
 
-    public function _construct()
+    public function __construct()
     {
-        $this->db = (new Database())->connect;
+        $this->db = (new Database())->connect();
 
     }
 
@@ -21,4 +21,4 @@ class Dividendo {
             'data_recebimento' => $dataRecebimento
         ]);
     }
-}
+}   
