@@ -1,3 +1,5 @@
+<?php require_once 'functions.php' ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,11 +32,11 @@
             <div class="cards">
                 <div class="card">
                     <h2>Total Investido</h2>
-                    <p>R$ 00,00</p>
+                    <p>R$ <?php echo calcularTotalInvestido(); ?> </p>
                 </div>
                 <div class="card">
                     <h2>Total de Dividendos</h2>
-                    <p>R$ 00,00</p>
+                    <p>R$ <?php echo calcularTotalDividendos(); ?> </p>
                 </div>
             </div>
         </section>

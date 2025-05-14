@@ -8,7 +8,6 @@ class Dividendo {
     public function __construct()
     {
         $this->db = (new Database())->connect();
-
     }
 
     public function adicionarDividendo($ativo, $valor, $dataRecebimento)
@@ -21,4 +20,11 @@ class Dividendo {
             'data_recebimento' => $dataRecebimento
         ]);
     }
-}   
+
+    public function calcularDividendosPorAtivo()
+    {
+        $sql = "SELECT ativo, SUM(valor) AS total_dividendos FROM dividendos GROUP BY ativo";
+        $query= $this->db->query($sql);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+}

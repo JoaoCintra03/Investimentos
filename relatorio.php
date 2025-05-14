@@ -1,56 +1,56 @@
 <?php
-   require_once 'classes/Ativo.php';
-   require_once 'classes/Dividendo.php';
+    require_once 'classes/Ativo.php';
+    require_once 'classes/Dividendo.php';
 
-   $ativo = new Ativo();
-   $dividendo = new Dividendo();
+    $ativo = new Ativo();
+    $dividendo= new Dividendo();
 
-   $investimentos =  $ativo->calcularPrecoMedio();
-   $dividendos = $dividendo->calcularDividendosPorAtivo(); 
+    $investimentos = $ativo->calcularPrecoMedio();
+    $dividendos = $dividendo->calcularDividendosPorAtivo();
 
-   $dadosGraficos = [];
-  
-   foreach($investimentos as $item)
-   {
-       $dadosGraficos[$item['ativo']] = [
-        'investido' => $item['total_valor'],
-        'dividendos' => 0
-       ];
-   }
+    $dadosGrafico = [];
 
-   foreach($dividendos as $item)
-   {
-    if (insset($dadosGraficos[$item['ativo']])) {
-        $dadosGraficos[$item['ativo']]['dividendo'] = $item['total_dividendos'];
+    foreach($investimentos as $item)
+    {
+        $dadosGrafico[$item['ativo']] = [
+            'investido' => $item['total_valor'],
+            'dividendos' => 0
+        ];
     }
-   }
+
+    foreach($dividendos as $item)
+    {
+        if (isset($dadosGrafico[$item['ativo']])) {
+            $dadosGrafico[$item['ativo']]['dividendos'] = $item['total_dividendos'];
+        }
+    }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatorio de Investimentos x Dividendos</title>
+    <title>Relatório de Investimentos x Dividendos</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Relatorio de Investimentos x Dividendos</h1>
+    <h1>Relatório de Investimentos x Dividendos</h1>
 
-    <canvas id="graficosInvestimentosDividendos"></canvas>
+    <canvas id="graficoInvestimentosDividendos"></canvas>
 
     <script>
-        const dados = <?php echo json_encode($dadosGraficos); ?>;
-        const labels = Object.keys(dados); 
+        const dados = <?php echo json_encode($dadosGrafico); ?>;
+        const labels = Object.keys(dados);
         console.log(dados);
         console.log(labels);
 
         const dadosInvestidos = Object.values(dados).map(item => item.investido)
         console.log(dadosInvestidos)
-        const dadosDividendos = Object.values(dados).map(item => item.dividendos)   
+        const dadosDividendos = Object.values(dados).map(item => item.dividendos)
 
-        const ctx = document.getElementById('graficosInvestidosDividendos')
+        const ctx = document.getElementById('graficoInvestimentosDividendos')
         .getContext('2d');
 
         new Chart(ctx, {
@@ -59,15 +59,15 @@
                 labels: labels,
                 datasets: [
                     {
-                        label : 'Total Ivenstido (R$)',
+                        label: 'Total Investido (R$)',
                         data: dadosInvestidos,
                         backgroundColor: 'rgba(54, 162, 235, 0.5)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
                     },
                     {
-                        label : 'Dividendos Recebidos (R$)',
-                        data: dadosInvestidos,
+                        label: 'Dividendos Recebidos (R$)',
+                        data: dadosDividendos,
                         backgroundColor: 'rgba(75, 192, 192, 0.5)',
                         borderColor: 'rgba(75, 192, 192, 1)',
                         borderWidth: 1
@@ -75,11 +75,10 @@
                 ]
             },
             options: {
-                responsive: true, 
+                responsive: true,
                 plugin: {
-                    legend{
+                    legend: {
                         position: 'top'
-                        
                     }
                 }
             }
