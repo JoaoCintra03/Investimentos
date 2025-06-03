@@ -1,4 +1,4 @@
-<?php require_once 'functions.php' ?>
+<?php require_once 'functions.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,31 +12,26 @@
     <header>
         <nav>
             <ul class="menu">
-                <li><a href="index.php">Início</a></li>
+                <li><a href="index.php">Inicio</a></li>
                 <li><a href="compras.php">Cadastrar Compras</a></li>
-                <li><a href="ativos.php">Preço Médio</a></li>
+                <li><a href="ativo.php">Preço Médio</a></li>
                 <li><a href="dividendos.php">Cadastrar Dividendos</a></li>
                 <li><a href="relatorio.php">Relatório</a></li>
             </ul>
         </nav>
     </header>
-
     <main>
         <section class="dashboard">
-            <h1>Bem-vindo a Gestão de Ativos</h1>
-            <p>
-                Este sistema ajuda você a gerenciar seus investimentos
-                em ativos
-            </p>
-
+            <h1>Bem-vindo à Gestão de Ativos</h1>
+            <p>Este sistema ajuda você a gerenciar seus investimentos em ativos</p>
             <div class="cards">
                 <div class="card">
                     <h2>Total Investido</h2>
-                    <p>R$ <?php echo calcularTotalInvestido(); ?> </p>
+                    <p>R$ <?php echo calcularTotalInvestido(); ?></p>
                 </div>
                 <div class="card">
                     <h2>Total de Dividendos</h2>
-                    <p>R$ <?php echo calcularTotalDividendos(); ?> </p>
+                    <p>R$ <?php echo calcularTotalDividendos(); ?></p>
                 </div>
             </div>
         </section>

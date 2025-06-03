@@ -13,28 +13,29 @@ header {
 }
 
 header nav {
-    max-width: 1200px;
+    width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
 }
 
-header nav .menu {
+header nav .menu{
     list-style: none;
     display: flex;
-    gap: 20px;
     padding: 0;
     margin: 0;
+    gap: 20px;
 }
 
 header nav .menu li a {
     text-decoration: none;
     color: #fff;
     padding: 5px 10px;
+
 }
 
 header nav .menu li a:hover {
-    background-color: #003366;
+    background: #003366;
     border-radius: 5px;
 }
 
@@ -44,7 +45,7 @@ main {
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
 
 main h1 {
@@ -59,22 +60,24 @@ main p {
 .cards {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .card {
-    flex: 1;
     min-width: 200px;
-    background-color: #e1e1e1;
+    background-color: #cecece;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    flex: 1;
 }
 
 .card h2 {
     font-size: 18px;
     margin-bottom: 10px;
 }
+
 .card p {
     font-size: 20px;
     font-weight: bold;
@@ -97,6 +100,7 @@ form {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 form label {
     display: block;
     margin-bottom: 5px;
@@ -124,11 +128,14 @@ form button {
     cursor: pointer;
 }
 
+form button:hover{
+    background-color: #003366;
+}
+
 table {
     width: 100%;
 }
 
-td {
+th, td {
     padding: 10px;
-    text-align: left;
 }
