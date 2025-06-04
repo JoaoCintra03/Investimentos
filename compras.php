@@ -1,5 +1,4 @@
 <?php
-//inclui_compra.php
     require_once 'classes/Compra.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

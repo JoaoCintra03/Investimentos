@@ -21,15 +21,10 @@ class Ativo {
         $query = $this->db->query($sql);
         $ativos = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        //echo "<pre>";
-        //print_r($ativos);exit;
-
         foreach($ativos as &$ativo) {
             $ativo['preco_medio'] = $ativo['total_valor'] / $ativo['total_quantidade'];
         }
 
-        //echo "<pre>";
-        //print_r($ativos);exit;
         return $ativos;
     }
 }

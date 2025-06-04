@@ -11,7 +11,7 @@ class PostApiService
 
     public function getPosts()
     {
-        //https://jsonplaceholder.typicode.com/posts
+
         $url = $this->baseUrl . "/posts";
 
         $curl = curl_init($url);
